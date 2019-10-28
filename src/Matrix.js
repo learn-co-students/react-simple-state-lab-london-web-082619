@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+// import { deflateRaw } from 'zlib';
+import Cell from './Cell'
 
 export default class Matrix extends Component {
   
   genRow = (vals) => (
-    vals.map(val => <div className="cell"></div>) // replace me and render a cell component instead!
+    vals.map(val => <Cell value={val}/>) // replace me and render a cell component instead!
+    
   )
   
   genMatrix = () => (
@@ -18,4 +21,13 @@ export default class Matrix extends Component {
     )
   }
   
+}
+let cell = []
+for(let i = 0; i < 10; i++) {
+  cell.push("#F00")
+}
+Matrix.defaultProps ={
+  values: (()=> {
+    return (new Array(10).fill(cell))
+  })()
 }
